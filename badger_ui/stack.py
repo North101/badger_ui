@@ -9,6 +9,6 @@ class Stack(Widget):
 
     self.children = children
 
-  def render(self, app: 'App', size: Size, offset: Offset):
+  def __call__(self, app: 'App', size: Size, offset: Offset):
     for child in self.children:
-      child.render(app, size, offset)
+      child(app, size, offset)

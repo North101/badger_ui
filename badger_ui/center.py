@@ -10,10 +10,10 @@ class Center(Widget):
   ):
     self.child = child
 
-  def render(self, app: App, size: Size, offset: Offset):
+  def __call__(self, app: App, size: Size, offset: Offset):
     center_x = size.width // 2
     center_y = size.height // 2
-    self.child.render(
+    self.child(
       app=app,
       size=size,
       offset=offset + Offset(center_x - (self.child.measure(app, size).width // 2), center_y),

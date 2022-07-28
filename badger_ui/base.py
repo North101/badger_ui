@@ -1,3 +1,5 @@
+import gc
+
 import badger2040
 
 from badger_ui.buttons import ButtonHandler
@@ -11,7 +13,7 @@ class Widget:
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     return False
 
-  def render(self, app: 'App', size: Size, offset: Offset):
+  def __call__(self, app: 'App', size: Size, offset: Offset):
     pass
 
 
@@ -55,13 +57,28 @@ class App(Widget):
     if not self.dirty:
       if not self.buttons.dirty:
         self.display.update()
+        gc.collect()
         self.display.halt()
       return
 
     self.clear()
-    self.render(self, self.size, self.offset)
+    self(self, self.size, self.offset)
     self.display.update()
     self.dirty = False
 
-  def render(self, app: 'App', size: Size, offset: Offset):
-    self.child.render(app, size, offset)
+  def __call__(self, app: 'App', size: Size, offset: Offset):
+    self.child(app, size, offset)
+
+    used = gc.mem_alloc()
+    free = gc.mem_free()
+    total = used + free
+    self.display.text(
+      f'{int(used / total * 100)}%',
+      0,
+      self.size.height - 10,
+      scale=0.4,
+    )
+  
+  def run(self):
+    while True:
+      self.update()
