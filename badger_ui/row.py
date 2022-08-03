@@ -8,9 +8,19 @@ class Row(Widget):
     super().__init__()
 
     self.children = children
-
-  def __call__(self, app: App, size: Size, offset: Offset):
+  
+  def measure(self, app: 'App', size: Size) -> Size:
+    width = 0
+    height = 0
     for child in self.children:
       child_size = child.measure(app, size)
-      child(app, child_size, offset)
+      height = max(height, child_size.height)
+      width += child_size.width
+
+    return Size(width, height)
+
+  def render(self, app: App, size: Size, offset: Offset):
+    for child in self.children:
+      child_size = child.measure(app, size)
+      child.render(app, child_size, offset)
       offset += Offset(child_size.width, 0)

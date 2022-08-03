@@ -9,5 +9,5 @@ class Positioned(Widget):
     self.child = child
     self.offset = offset
   
-  def __call__(self, app: 'App', size: Size, offset: Offset):
-    return self.child(app, size, offset + self.offset)
+  def render(self, app: 'App', size: Size, offset: Offset):
+    return self.child.render(app, size, offset + self.offset)

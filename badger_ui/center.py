@@ -9,12 +9,16 @@ class Center(Widget):
       child: Widget,
   ):
     self.child = child
+  
+  def measure(self, app: 'App', size: Size) -> Size:
+    return self.child.measure(app, size)
 
-  def __call__(self, app: App, size: Size, offset: Offset):
+  def render(self, app: App, size: Size, offset: Offset):
     center_x = size.width // 2
     center_y = size.height // 2
-    self.child(
+    child_size = self.child.measure(app, size)
+    self.child.render(
       app=app,
-      size=size,
-      offset=offset + Offset(center_x - (self.child.measure(app, size).width // 2), center_y),
+      size=child_size,
+      offset=offset + Offset(center_x - (child_size.width // 2), center_y - (child_size.height // 2)),
     )

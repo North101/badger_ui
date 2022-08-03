@@ -13,7 +13,7 @@ class Widget:
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     return False
 
-  def __call__(self, app: 'App', size: Size, offset: Offset):
+  def render(self, app: 'App', size: Size, offset: Offset):
     pass
 
 
@@ -36,17 +36,14 @@ class App(Widget):
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     return self.child.on_button(app, pressed)
 
-  def test_button(self) -> bool:
+  def test_button(self):
     if not self.buttons.dirty:
       return
 
     pressed = self.buttons.pressed()
     self.buttons.dirty = self.buttons.any()
 
-    result = self.on_button(self, pressed)
-    self.dirty = self.dirty or result
-
-    return result
+    self.dirty = self.on_button(self, pressed) or self.dirty
 
   def clear(self):
     self.display.pen(self.clear_color)
@@ -62,23 +59,23 @@ class App(Widget):
       return
 
     self.clear()
-    self(self, self.size, self.offset)
+    self.render(self, self.size, self.offset)
     self.display.update()
     self.dirty = False
 
-  def __call__(self, app: 'App', size: Size, offset: Offset):
-    self.child(app, size, offset)
+  def render(self, app: 'App', size: Size, offset: Offset):
+    self.child.render(app, size, offset)
 
     used = gc.mem_alloc()
     free = gc.mem_free()
     total = used + free
     self.display.text(
-      f'{int(used / total * 100)}%',
-      0,
-      self.size.height - 10,
-      scale=0.4,
+        f'{int(used / total * 100)}%',
+        0,
+        self.size.height - 10,
+        scale=0.4,
     )
-  
+
   def run(self):
     while True:
       self.update()

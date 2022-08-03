@@ -14,5 +14,5 @@ class SizedBox(Widget):
   def measure(self, app: App, size: Size) -> Size:
     return self.size
   
-  def __call__(self, app: App, size: Size, offset: Offset):
-    return self.child(app, self.size, offset)
+  def render(self, app: App, size: Size, offset: Offset):
+    return self.child.render(app, self.size, offset)

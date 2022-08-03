@@ -8,9 +8,20 @@ class Column(Widget):
     super().__init__()
 
     self.children = children
-
-  def __call__(self, app: App, size: Size, offset: Offset):
+  
+  def measure(self, app: 'App', size: Size) -> Size:
+    width = 0
+    height = 0
     for child in self.children:
       child_size = child.measure(app, size)
-      child(app, child_size, offset)
+      width = max(width, child_size.width)
+      height += child_size.height
+    
+    return Size(width, height)
+
+  def render(self, app: App, size: Size, offset: Offset):
+    center_x = size.width // 2
+    for child in self.children:
+      child_size = child.measure(app, size)
+      child.render(app, child_size, offset + Offset(center_x - (child_size.width // 2), 0))
       offset += Offset(0, child_size.height)

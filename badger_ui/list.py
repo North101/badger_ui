@@ -90,9 +90,9 @@ class ListWidget(Widget):
 
     return self.items[self.selected_child_index].on_button(app, pressed)
 
-  def __call__(self, app: App, size: Size, offset: Offset):
+  def render(self, app: App, size: Size, offset: Offset):
     for i, item in enumerate(self.items, start=self.page_start):
-      item(
+      item.render(
           app=app,
           size=Size(size.width - self.scrollbar_width, self.item_height),
           offset=Offset(0, self.item_height * (i % self.page_item_count)),
