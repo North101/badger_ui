@@ -5,6 +5,8 @@ import badger2040
 from badger_ui.buttons import ButtonHandler
 from badger_ui.util import Offset, Size
 
+display = badger2040.Badger2040()
+
 
 class Widget:
   def measure(self, app: 'App', size: Size) -> Size:
@@ -20,20 +22,23 @@ class Widget:
 class App(Widget):
   def __init__(
       self,
-      display: badger2040.Badger2040,
+      update_speed=badger2040.UPDATE_TURBO,
       size=Size(width=badger2040.WIDTH, height=badger2040.HEIGHT),
       clear_color: int = 15,
-      offset: Offset = None,
+      offset: Offset | None = None,
   ):
     self.display = display
+    self.display.update_speed(update_speed)
     self.size = size
     self.offset = offset or Offset(0, 0)
-    self.child: Widget = None
+    self.child: Widget | None = None
     self.buttons = ButtonHandler()
     self.clear_color = clear_color
     self.dirty = True
 
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
+    if not self.child:
+      return False
     return self.child.on_button(app, pressed)
 
   def test_button(self):
@@ -64,15 +69,21 @@ class App(Widget):
     self.dirty = False
 
   def render(self, app: 'App', size: Size, offset: Offset):
-    self.child.render(app, size, offset)
+    from badger_ui.text import text
+
+    if self.child:
+      self.child.render(app, size, offset)
 
     used = gc.mem_alloc()
     free = gc.mem_free()
     total = used + free
-    self.display.text(
-        f'{int(used / total * 100)}%',
-        0,
-        self.size.height - 10,
+    text(
+        app=app,
+        size=size,
+        offset=Offset(0, self.size.height - 10),
+        text=f'{int(used / total * 100)}%',
+        line_height=12,
+        thickness=2,
         scale=0.4,
     )
 

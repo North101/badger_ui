@@ -14,11 +14,9 @@ class Center(Widget):
     return self.child.measure(app, size)
 
   def render(self, app: App, size: Size, offset: Offset):
-    center_x = size.width // 2
-    center_y = size.height // 2
     child_size = self.child.measure(app, size)
     self.child.render(
       app=app,
       size=child_size,
-      offset=offset + Offset(center_x - (child_size.width // 2), center_y - (child_size.height // 2)),
+      offset=offset + Offset((size.width - child_size.width) // 2, (size.height - child_size.height) // 2),
     )
