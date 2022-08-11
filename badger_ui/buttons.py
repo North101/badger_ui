@@ -72,6 +72,7 @@ class ButtonHandler:
 
   def __init__(self):
     self.dirty = False
+    self._pressed = {}
     for button in self.buttons.values():
       button.pin.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=self.handler)
 
@@ -86,10 +87,9 @@ class ButtonHandler:
     ))
   
   def pressed(self):
-    return {
-      pin: button.read()
-      for pin, button in self.buttons.items()
-    }
+    for pin, button in self.buttons.items():
+      self._pressed[pin] = button.read()
+    return self._pressed
 
 
   def __getitem__(self, pin: int):

@@ -12,6 +12,7 @@ class TextWidget(Widget):
       thickness: int = 1,
       color: int = 0,
       scale: float = 1,
+      underline = False,
   ):
     self.text = text
     self.font = font
@@ -19,6 +20,7 @@ class TextWidget(Widget):
     self.color = color
     self.scale = scale
     self.line_height = line_height
+    self.underline = underline
 
   def measure(self, app: App, size: Size) -> Size:
     return Size(self.width(app), self.line_height)
@@ -27,7 +29,7 @@ class TextWidget(Widget):
     return app.display.measure_text(self.text, scale=self.scale)
 
   def render(self, app: App, size: Size, offset: Offset):
-    text(app, size, offset, self.text, self.line_height, self.font, self.thickness, self.color, self.scale)
+    text(app, size, offset, self.text, self.line_height, self.font, self.thickness, self.color, self.scale, self.underline)
 
 
 def text(
@@ -40,6 +42,7 @@ def text(
     thickness: int = 1,
     color: int = 0,
     scale: float = 1,
+    underline = False,
 ):
   app.display.font(font)
   app.display.pen(color)
@@ -50,3 +53,10 @@ def text(
       offset.y + (line_height // 2),
       scale=scale,
   )
+  if underline:
+    app.display.line(
+      offset.x,
+      offset.y + line_height,
+      offset.x + size.width,
+      offset.y + line_height,
+    )
