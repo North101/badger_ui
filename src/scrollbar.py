@@ -14,7 +14,7 @@ def scrollbar(app: App, size: Size, offset: Offset, current: int, count: int):
   start_y = offset.y
   stop_x = offset.x + size.width - 1
   stop_y = offset.y + height
-  app.display.pen(0)
+  app.display.set_pen(0)
   # top
   app.display.line(
       start_x,

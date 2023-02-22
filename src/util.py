@@ -1,4 +1,4 @@
-import badger2040
+import badger2040w
 from collections import namedtuple
 
 Size = namedtuple('Size', [
@@ -36,7 +36,7 @@ class Image:
     with open(self.path, 'r') as f:
       f.readinto(self.data)
   
-  def draw(self, display: badger2040.Badger2040, offset: Offset):
+  def draw(self, display: badger2040w.Badger2040W, offset: Offset):
     display.image(
       self.data,
       w=self.width,
@@ -61,8 +61,8 @@ class IconSheet:
     with open(self.path, 'r') as f:
       f.readinto(self.data)
 
-  def icon(self, display: badger2040.Badger2040, icon_index: int, offset: Offset):
-    display.pen(0)
+  def icon(self, display: badger2040w.Badger2040W, icon_index: int, offset: Offset):
+    display.set_pen(0)
     display.icon(
         self.data,
         icon_index,

@@ -1,6 +1,6 @@
 import time
 
-import badger2040
+import badger2040w
 from machine import Pin
 
 
@@ -62,12 +62,12 @@ class Button:
 
 class ButtonHandler:
   buttons = {
-      badger2040.BUTTON_A: Button(badger2040.BUTTON_A, invert=False),
-      badger2040.BUTTON_B: Button(badger2040.BUTTON_B, invert=False),
-      badger2040.BUTTON_C: Button(badger2040.BUTTON_C, invert=False),
-      badger2040.BUTTON_UP: Button(badger2040.BUTTON_UP, invert=False),
-      badger2040.BUTTON_DOWN: Button(badger2040.BUTTON_DOWN, invert=False),
-      badger2040.BUTTON_USER: Button(badger2040.BUTTON_USER),
+      badger2040w.BUTTON_A: Button(badger2040w.BUTTON_A, invert=False),
+      badger2040w.BUTTON_B: Button(badger2040w.BUTTON_B, invert=False),
+      badger2040w.BUTTON_C: Button(badger2040w.BUTTON_C, invert=False),
+      badger2040w.BUTTON_UP: Button(badger2040w.BUTTON_UP, invert=False),
+      badger2040w.BUTTON_DOWN: Button(badger2040w.BUTTON_DOWN, invert=False),
+      #badger2040w.BUTTON_USER: Button(badger2040w.BUTTON_USER),
   }
 
   def __init__(self):

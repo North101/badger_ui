@@ -1,11 +1,11 @@
 import gc
 
-import badger2040
+import badger2040w
 
 from badger_ui.buttons import ButtonHandler
 from badger_ui.util import Offset, Size
 
-display = badger2040.Badger2040()
+display = badger2040w.Badger2040W()
 
 
 class Widget:
@@ -22,19 +22,20 @@ class Widget:
 class App(Widget):
   def __init__(
       self,
-      update_speed=badger2040.UPDATE_TURBO,
-      size=Size(width=badger2040.WIDTH, height=badger2040.HEIGHT),
+      update_speed=badger2040w.UPDATE_TURBO,
+      size=Size(width=badger2040w.WIDTH, height=badger2040w.HEIGHT),
       clear_color: int = 15,
       offset: Offset | None = None,
   ):
     self.display = display
-    self.display.update_speed(update_speed)
+    self.display.set_update_speed(update_speed)
     self.size = size
     self.offset = offset or Offset(0, 0)
     self.child: Widget | None = None
     self.buttons = ButtonHandler()
     self.clear_color = clear_color
     self.dirty = True
+    self.alive = True
 
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     if not self.child:
@@ -51,16 +52,16 @@ class App(Widget):
     self.dirty = self.on_button(self, pressed) or self.dirty
 
   def clear(self):
-    self.display.pen(self.clear_color)
+    self.display.set_pen(self.clear_color)
     self.display.clear()
 
   def update(self):
     self.test_button()
     if not self.dirty:
-      if not self.buttons.dirty:
-        self.display.update()
-        gc.collect()
-        self.display.halt()
+    #   if not self.buttons.dirty:
+    #     self.display.update()
+    #     gc.collect()
+    #     self.display.halt()
       return
 
     self.clear()
@@ -88,5 +89,5 @@ class App(Widget):
     )
 
   def run(self):
-    while True:
+    while self.alive:
       self.update()

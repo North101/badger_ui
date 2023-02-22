@@ -1,4 +1,4 @@
-import badger2040
+import badger2040w
 
 from badger_ui.util import Offset, Size
 
@@ -50,6 +50,9 @@ class ListWidget(Widget):
   @property
   def selected_child_index(self):
     return self.selected_index % self.page_item_count
+  
+  def measure(self, app: 'App', size: Size) -> Size:
+    return Size(size.width, self.page_item_count * self.item_height)
 
   def create_items(self):
     self.items = [
@@ -74,14 +77,14 @@ class ListWidget(Widget):
     )
 
   def on_button(self, app: App, pressed: dict[int, bool]):
-    if pressed[badger2040.BUTTON_UP]:
+    if pressed[badger2040w.BUTTON_UP]:
       page_index = self.page_index
       selected_index = self.selected_index
       self.selected_index = (selected_index - 1) % self.item_count
       self.update_items(page_index, selected_index)
       return True
 
-    elif pressed[badger2040.BUTTON_DOWN]:
+    elif pressed[badger2040w.BUTTON_DOWN]:
       page_index = self.page_index
       selected_index = self.selected_index
       self.selected_index = (selected_index + 1) % self.item_count
@@ -95,13 +98,13 @@ class ListWidget(Widget):
       item.render(
           app=app,
           size=Size(size.width - self.scrollbar_width, self.item_height),
-          offset=Offset(0, self.item_height * (i % self.page_item_count)),
+          offset=Offset(offset.x, offset.y + self.item_height * (i % self.page_item_count)),
       )
 
     scrollbar(
         app=app,
         size=Size(self.scrollbar_width, size.height),
-        offset=Offset(size.width - self.scrollbar_width, 0),
+        offset=Offset(offset.x + size.width - self.scrollbar_width, offset.y),
         current=self.page_index,
         count=self.page_count,
     )

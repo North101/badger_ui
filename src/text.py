@@ -44,9 +44,9 @@ def text(
     scale: float = 1,
     underline = False,
 ):
-  app.display.font(font)
-  app.display.pen(color)
-  app.display.thickness(thickness)
+  app.display.set_font(font)
+  app.display.set_pen(color)
+  app.display.set_thickness(thickness)
   app.display.text(
       text,
       offset.x,
