@@ -1,74 +1,75 @@
 {
+  "name": "badger_ui",
   "version": "0.1",
   "repository": "github:North101/badger_ui",
   "urls": [
     [
       "badger_ui/icon.py",
-      "github:North101/badger_ui/src/icon.py"
+      "github:North101/badger_ui/badger_ui/icon.py"
     ],
     [
       "badger_ui/sized.py",
-      "github:North101/badger_ui/src/sized.py"
+      "github:North101/badger_ui/badger_ui/sized.py"
     ],
     [
       "badger_ui/list.py",
-      "github:North101/badger_ui/src/list.py"
+      "github:North101/badger_ui/badger_ui/list.py"
     ],
     [
       "badger_ui/align.py",
-      "github:North101/badger_ui/src/align.py"
+      "github:North101/badger_ui/badger_ui/align.py"
     ],
     [
       "badger_ui/util.py",
-      "github:North101/badger_ui/src/util.py"
+      "github:North101/badger_ui/badger_ui/util.py"
     ],
     [
       "badger_ui/positioned.py",
-      "github:North101/badger_ui/src/positioned.py"
+      "github:North101/badger_ui/badger_ui/positioned.py"
     ],
     [
       "badger_ui/__init__.py",
-      "github:North101/badger_ui/src/__init__.py"
+      "github:North101/badger_ui/badger_ui/__init__.py"
     ],
     [
       "badger_ui/buttons.py",
-      "github:North101/badger_ui/src/buttons.py"
+      "github:North101/badger_ui/badger_ui/buttons.py"
     ],
     [
       "badger_ui/stack.py",
-      "github:North101/badger_ui/src/stack.py"
+      "github:North101/badger_ui/badger_ui/stack.py"
     ],
     [
       "badger_ui/text.py",
-      "github:North101/badger_ui/src/text.py"
+      "github:North101/badger_ui/badger_ui/text.py"
     ],
     [
       "badger_ui/row.py",
-      "github:North101/badger_ui/src/row.py"
+      "github:North101/badger_ui/badger_ui/row.py"
     ],
     [
       "badger_ui/padding.py",
-      "github:North101/badger_ui/src/padding.py"
+      "github:North101/badger_ui/badger_ui/padding.py"
     ],
     [
       "badger_ui/image.py",
-      "github:North101/badger_ui/src/image.py"
+      "github:North101/badger_ui/badger_ui/image.py"
     ],
     [
       "badger_ui/__main__.py",
-      "github:North101/badger_ui/src/__main__.py"
+      "github:North101/badger_ui/badger_ui/__main__.py"
     ],
     [
       "badger_ui/base.py",
-      "github:North101/badger_ui/src/base.py"
+      "github:North101/badger_ui/badger_ui/base.py"
     ],
     [
       "badger_ui/column.py",
-      "github:North101/badger_ui/src/column.py"
+      "github:North101/badger_ui/badger_ui/column.py"
     ],
     [
       "badger_ui/scrollbar.py",
-      "github:North101/badger_ui/src/scrollbar.py"
+      "github:North101/badger_ui/badger_ui/scrollbar.py"
     ]
   ]
 }
