@@ -5,71 +5,71 @@
   "urls": [
     [
       "badger_ui/icon.py",
-      "github:North101/badger_ui/badger_ui/icon.py"
+      "file:badger_ui/icon.py"
     ],
     [
       "badger_ui/sized.py",
-      "github:North101/badger_ui/badger_ui/sized.py"
+      "file:badger_ui/sized.py"
     ],
     [
       "badger_ui/list.py",
-      "github:North101/badger_ui/badger_ui/list.py"
+      "file:badger_ui/list.py"
     ],
     [
       "badger_ui/align.py",
-      "github:North101/badger_ui/badger_ui/align.py"
+      "file:badger_ui/align.py"
     ],
     [
       "badger_ui/util.py",
-      "github:North101/badger_ui/badger_ui/util.py"
+      "file:badger_ui/util.py"
     ],
     [
       "badger_ui/positioned.py",
-      "github:North101/badger_ui/badger_ui/positioned.py"
+      "file:badger_ui/positioned.py"
     ],
     [
       "badger_ui/__init__.py",
-      "github:North101/badger_ui/badger_ui/__init__.py"
+      "file:badger_ui/__init__.py"
     ],
     [
       "badger_ui/buttons.py",
-      "github:North101/badger_ui/badger_ui/buttons.py"
+      "file:badger_ui/buttons.py"
     ],
     [
       "badger_ui/stack.py",
-      "github:North101/badger_ui/badger_ui/stack.py"
+      "file:badger_ui/stack.py"
     ],
     [
       "badger_ui/text.py",
-      "github:North101/badger_ui/badger_ui/text.py"
+      "file:badger_ui/text.py"
     ],
     [
       "badger_ui/row.py",
-      "github:North101/badger_ui/badger_ui/row.py"
+      "file:badger_ui/row.py"
     ],
     [
       "badger_ui/padding.py",
-      "github:North101/badger_ui/badger_ui/padding.py"
+      "file:badger_ui/padding.py"
     ],
     [
       "badger_ui/image.py",
-      "github:North101/badger_ui/badger_ui/image.py"
+      "file:badger_ui/image.py"
     ],
     [
       "badger_ui/__main__.py",
-      "github:North101/badger_ui/badger_ui/__main__.py"
+      "file:badger_ui/__main__.py"
     ],
     [
       "badger_ui/base.py",
-      "github:North101/badger_ui/badger_ui/base.py"
+      "file:badger_ui/base.py"
     ],
     [
       "badger_ui/column.py",
-      "github:North101/badger_ui/badger_ui/column.py"
+      "file:badger_ui/column.py"
     ],
     [
       "badger_ui/scrollbar.py",
-      "github:North101/badger_ui/badger_ui/scrollbar.py"
+      "file:badger_ui/scrollbar.py"
     ]
   ]
 }

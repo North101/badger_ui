@@ -36,7 +36,7 @@ class Left(Widget):
     child_size = self.child.measure(app, size)
     self.child.render(
         app=app,
-        size=child_size,
+        size=Size(child_size.width, size.height),
         offset=offset,
     )
 
@@ -55,8 +55,27 @@ class Right(Widget):
     child_size = self.child.measure(app, size)
     self.child.render(
         app=app,
-        size=child_size,
+        size=Size(child_size.width, size.height),
         offset=offset + Offset(size.width - child_size.width, 0),
+    )
+
+
+class Top(Widget):
+  def __init__(
+      self,
+      child: Widget,
+  ):
+    self.child = child
+
+  def measure(self, app: 'App', size: Size) -> Size:
+    return self.child.measure(app, size)
+
+  def render(self, app: App, size: Size, offset: Offset):
+    child_size = self.child.measure(app, size)
+    self.child.render(
+        app=app,
+        size=Size(size.width, child_size.height),
+        offset=offset,
     )
 
 
