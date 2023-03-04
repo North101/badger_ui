@@ -26,6 +26,8 @@ class TextWidget(Widget):
     return Size(self.width(app), self.line_height)
 
   def width(self, app: App):
+    app.display.set_font(self.font)
+    app.display.set_thickness(self.thickness)
     return app.display.measure_text(self.text, scale=self.scale)
 
   def render(self, app: App, size: Size, offset: Offset):
