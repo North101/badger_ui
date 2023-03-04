@@ -1,8 +1,9 @@
 import gc
 
-import badger2040w
 from badger_ui.buttons import ButtonHandler
 from badger_ui.util import Offset, Size
+
+import badger2040w
 
 display = badger2040w.Badger2040W()
 
@@ -35,6 +36,9 @@ class App(Widget):
     self.clear_color = clear_color
     self.dirty = True
     self.alive = True
+  
+  def close(self):
+    pass
 
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     if not self.child:
@@ -87,6 +91,24 @@ class App(Widget):
         scale=0.4,
     )
 
-  def run(self):
-    while self.alive:
-      self.update()
+
+class AppRunner:
+  def __init__(self):
+    self._app: App = None
+  
+  @property
+  def app(self):
+    return self._app
+
+  @app.setter
+  def app(self, value: App):
+    if self._app is not None:
+      self._app.close()
+
+    self._app = value
+  
+  def update(self):
+    self.app.update()
+
+
+app_runner = AppRunner()

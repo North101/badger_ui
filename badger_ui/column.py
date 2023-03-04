@@ -1,6 +1,5 @@
-from badger_ui.util import Offset, Size
-
 from .base import App, Widget
+from .util import Offset, Size
 
 
 class Column(Widget):
