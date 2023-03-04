@@ -1,7 +1,7 @@
 {
   "name": "badger_ui",
   "version": "0.1",
-  "repository": "github:North101/badger_ui",
+  "repository": "file:.",
   "urls": [
     [
       "badger_ui/icon.py",

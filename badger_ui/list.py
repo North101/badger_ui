@@ -1,9 +1,8 @@
 import badger2040w
 
-from badger_ui.util import Offset, Size
-
 from .base import App, Widget
 from .scrollbar import scrollbar
+from .util import Offset, Size
 
 
 class ListItemBuilder:
@@ -76,7 +75,7 @@ class ListWidget(Widget):
         selected=True,
     )
 
-  def on_button(self, app: App, pressed: dict[int, bool]):
+  def on_button(self, app: App, pressed: dict[int, bool]) -> bool:
     if pressed[badger2040w.BUTTON_UP]:
       page_index = self.page_index
       selected_index = self.selected_index
