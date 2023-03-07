@@ -71,5 +71,11 @@
       "badger_ui/scrollbar.py",
       "file:badger_ui/scrollbar.py"
     ]
+  ],
+  "deps": [
+    [
+      "github:pimoroni/pimoroni-pico/blob/main/micropython/examples/badger2040w/lib/badger2040w.py",
+      "master"
+    ]
   ]
 }

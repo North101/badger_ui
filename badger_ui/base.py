@@ -9,6 +9,9 @@ display = badger2040w.Badger2040W()
 
 
 class Widget:
+  def init(self):
+    pass
+
   def measure(self, app: 'App', size: Size) -> Size:
     return size
 
@@ -31,14 +34,25 @@ class App(Widget):
     self.display.set_update_speed(update_speed)
     self.size = size
     self.offset = offset or Offset(0, 0)
-    self.child: Widget | None = None
+    self._child: Widget | None = None
     self.buttons = ButtonHandler()
     self.clear_color = clear_color
     self.dirty = True
-    self.alive = True
   
   def close(self):
     pass
+  
+  @property
+  def child(self):
+    return self._child
+
+  @child.setter
+  def child(self, value):
+    if self._child is value:
+      return
+
+    self._child = value
+    self._child.init()
 
   def on_button(self, app: 'App', pressed: dict[int, bool]) -> bool:
     if not self.child:
@@ -71,6 +85,7 @@ class App(Widget):
     self.render(self, self.size, self.offset)
     self.display.update()
     self.dirty = False
+    gc.collect()
 
   def render(self, app: 'App', size: Size, offset: Offset):
     from badger_ui.text import text
@@ -102,10 +117,14 @@ class AppRunner:
 
   @app.setter
   def app(self, value: App):
-    if self._app is not None:
+    if self._app is value:
+      return
+    elif self._app is not None:
       self._app.close()
 
     self._app = value
+    self._app.init()
+    self.update()
   
   def update(self):
     self.app.update()
