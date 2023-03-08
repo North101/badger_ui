@@ -1,3 +1,5 @@
+from typing import Callable
+
 import badger2040w
 
 from .base import App, Widget
@@ -5,20 +7,15 @@ from .scrollbar import scrollbar
 from .util import Offset, Size
 
 
-class ListItemBuilder:
-  def __call__(self, index: int, selected: bool) -> Widget:
-    pass
-
-
 class ListWidget(Widget):
   _selected_index = 0
-  children: list[Widget] = None
+  children: list[Widget] | None = None
 
   def __init__(
       self,
       item_height: int,
       item_count: int,
-      item_builder: ListItemBuilder,
+      item_builder: Callable[[int, bool], Widget],
       page_item_count: int,
       selected_index: int = 0,
   ):
@@ -56,8 +53,8 @@ class ListWidget(Widget):
   def create_items(self):
     self.items = [
         self.item_builder(
-            index=i,
-            selected=(i == self.selected_index),
+            i,
+            (i == self.selected_index),
         )
         for i in range(self.page_start, min(self.page_stop, self.item_count))
     ]
@@ -67,12 +64,12 @@ class ListWidget(Widget):
       return self.create_items()
 
     self.items[previous_selected_index - self.page_start] = self.item_builder(
-        index=previous_selected_index,
-        selected=False,
+        previous_selected_index,
+        False,
     )
     self.items[self.selected_child_index - self.page_start] = self.item_builder(
-        index=self.selected_child_index,
-        selected=True,
+        self.selected_child_index,
+        True,
     )
 
   def on_button(self, app: App, pressed: dict[int, bool]) -> bool:
