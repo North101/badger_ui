@@ -8,7 +8,7 @@ class Row(Widget):
     super().__init__()
 
     self.children = children
-  
+
   def measure(self, app: 'App', size: Size) -> Size:
     width = 0
     height = 0

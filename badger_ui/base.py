@@ -1,9 +1,8 @@
 import gc
 
+import badger2040w
 from badger_ui.buttons import ButtonHandler
 from badger_ui.util import Offset, Size
-
-import badger2040w
 
 display = badger2040w.Badger2040W()
 
@@ -38,10 +37,10 @@ class App(Widget):
     self.buttons = ButtonHandler()
     self.clear_color = clear_color
     self.dirty = True
-  
+
   def close(self):
     pass
-  
+
   @property
   def child(self):
     return self._child
@@ -75,10 +74,10 @@ class App(Widget):
   def update(self):
     self.test_button()
     if not self.dirty:
-    #   if not self.buttons.dirty:
-    #     self.display.update()
-    #     gc.collect()
-    #     self.display.halt()
+      # if not self.buttons.dirty:
+      #  self.display.update()
+      #  gc.collect()
+      #  self.display.halt()
       return
 
     self.clear()
@@ -109,8 +108,8 @@ class App(Widget):
 
 class AppRunner:
   def __init__(self):
-    self._app: App = None
-  
+    self._app: App | None = None
+
   @property
   def app(self):
     return self._app
@@ -125,9 +124,10 @@ class AppRunner:
     self._app = value
     self._app.init()
     self.update()
-  
+
   def update(self):
-    self.app.update()
+    if self.app:
+      self.app.update()
 
 
 app_runner = AppRunner()

@@ -31,18 +31,18 @@ class Image:
     self.width = width
     self.height = height
     self.data = bytearray(width * height // 8)
-  
+
   def load(self):
     with open(self.path, 'r') as f:
       f.readinto(self.data)
-  
+
   def draw(self, display: badger2040w.Badger2040W, offset: Offset):
     display.image(
-      self.data,
-      w=self.width,
-      h=self.height,
-      x=offset.x,
-      y=offset.y,
+        self.data,
+        w=self.width,
+        h=self.height,
+        x=offset.x,
+        y=offset.y,
     )
 
 
@@ -71,4 +71,3 @@ class IconSheet:
         offset.x,
         offset.y,
     )
-  

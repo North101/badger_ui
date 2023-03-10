@@ -7,7 +7,7 @@ class Column(Widget):
     super().__init__()
 
     self.children = children
-  
+
   def measure(self, app: 'App', size: Size) -> Size:
     width = 0
     height = 0
@@ -15,7 +15,7 @@ class Column(Widget):
       child_size = child.measure(app, size)
       width = max(width, child_size.width)
       height += child_size.height
-    
+
     return Size(width, height)
 
   def render(self, app: App, size: Size, offset: Offset):

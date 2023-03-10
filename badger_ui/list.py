@@ -46,7 +46,7 @@ class ListWidget(Widget):
   @property
   def selected_child_index(self):
     return self.selected_index % self.page_item_count
-  
+
   def measure(self, app: 'App', size: Size) -> Size:
     return Size(size.width, self.page_item_count * self.item_height)
 
