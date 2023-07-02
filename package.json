@@ -1,75 +1,75 @@
 {
   "name": "badger_ui",
   "version": "0.1",
-  "repository": "file:.",
+  "repository": "North101/badger_ui",
   "urls": [
     [
       "badger_ui/icon.py",
-      "file:badger_ui/icon.py"
+      "badger_ui/icon.py"
     ],
     [
       "badger_ui/sized.py",
-      "file:badger_ui/sized.py"
+      "badger_ui/sized.py"
     ],
     [
       "badger_ui/list.py",
-      "file:badger_ui/list.py"
+      "badger_ui/list.py"
     ],
     [
       "badger_ui/align.py",
-      "file:badger_ui/align.py"
+      "badger_ui/align.py"
     ],
     [
       "badger_ui/util.py",
-      "file:badger_ui/util.py"
+      "badger_ui/util.py"
     ],
     [
       "badger_ui/positioned.py",
-      "file:badger_ui/positioned.py"
+      "badger_ui/positioned.py"
     ],
     [
       "badger_ui/__init__.py",
-      "file:badger_ui/__init__.py"
+      "badger_ui/__init__.py"
     ],
     [
       "badger_ui/buttons.py",
-      "file:badger_ui/buttons.py"
+      "badger_ui/buttons.py"
     ],
     [
       "badger_ui/stack.py",
-      "file:badger_ui/stack.py"
+      "badger_ui/stack.py"
     ],
     [
       "badger_ui/text.py",
-      "file:badger_ui/text.py"
+      "badger_ui/text.py"
     ],
     [
       "badger_ui/row.py",
-      "file:badger_ui/row.py"
+      "badger_ui/row.py"
     ],
     [
       "badger_ui/padding.py",
-      "file:badger_ui/padding.py"
+      "badger_ui/padding.py"
     ],
     [
       "badger_ui/image.py",
-      "file:badger_ui/image.py"
+      "badger_ui/image.py"
     ],
     [
       "badger_ui/__main__.py",
-      "file:badger_ui/__main__.py"
+      "badger_ui/__main__.py"
     ],
     [
       "badger_ui/base.py",
-      "file:badger_ui/base.py"
+      "badger_ui/base.py"
     ],
     [
       "badger_ui/column.py",
-      "file:badger_ui/column.py"
+      "badger_ui/column.py"
     ],
     [
       "badger_ui/scrollbar.py",
-      "file:badger_ui/scrollbar.py"
+      "badger_ui/scrollbar.py"
     ]
   ],
   "deps": [
