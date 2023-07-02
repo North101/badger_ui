@@ -1,10 +1,11 @@
 import gc
 
-import badger2040w
 from badger_ui.buttons import ButtonHandler
 from badger_ui.util import Offset, Size
 
-display = badger2040w.Badger2040W()
+import badger2040
+
+display = badger2040.Badger2040()
 
 
 class Widget:
@@ -24,8 +25,8 @@ class Widget:
 class App(Widget):
   def __init__(
       self,
-      update_speed=badger2040w.UPDATE_FAST,
-      size=Size(width=badger2040w.WIDTH, height=badger2040w.HEIGHT),
+      update_speed=badger2040.UPDATE_FAST,
+      size=Size(width=badger2040.WIDTH, height=badger2040.HEIGHT),
       clear_color: int = 15,
       offset: Offset | None = None,
   ):

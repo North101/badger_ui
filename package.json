@@ -74,7 +74,7 @@
   ],
   "deps": [
     [
-      "github:pimoroni/pimoroni-pico/micropython/examples/badger2040w/lib/badger2040w.py",
+      "github:pimoroni/pimoroni-pico/micropython/examples/badger2040/lib/badger2040.py",
       "main"
     ]
   ]

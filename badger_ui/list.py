@@ -1,6 +1,6 @@
 from typing import Callable
 
-import badger2040w
+import badger2040
 
 from .base import App, Widget
 from .scrollbar import scrollbar
@@ -73,14 +73,14 @@ class ListWidget(Widget):
     )
 
   def on_button(self, app: App, pressed: dict[int, bool]) -> bool:
-    if pressed[badger2040w.BUTTON_UP]:
+    if pressed[badger2040.BUTTON_UP]:
       page_index = self.page_index
       selected_index = self.selected_index
       self.selected_index = (selected_index - 1) % self.item_count
       self.update_items(page_index, selected_index)
       return True
 
-    elif pressed[badger2040w.BUTTON_DOWN]:
+    elif pressed[badger2040.BUTTON_DOWN]:
       page_index = self.page_index
       selected_index = self.selected_index
       self.selected_index = (selected_index + 1) % self.item_count

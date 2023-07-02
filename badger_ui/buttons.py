@@ -1,7 +1,8 @@
 import time
 
-import badger2040w
 from machine import Pin
+
+import badger2040
 
 
 class ButtonCallback:
@@ -10,11 +11,11 @@ class ButtonCallback:
 
 
 class Button:
-  def __init__(self, button, invert=True, repeat_time=200, hold_time=1000):
+  def __init__(self, pin: Pin, invert=False, repeat_time=200, hold_time=1000):
+    self.pin = pin
     self.invert = invert
     self.repeat_time = repeat_time
     self.hold_time = hold_time
-    self.pin = Pin(button, pull=Pin.PULL_UP if invert else Pin.PULL_DOWN)
     self.last_state = False
     self.pressed = False
     self.pressed_time = 0
@@ -62,12 +63,8 @@ class Button:
 
 class ButtonHandler:
   buttons = {
-      badger2040w.BUTTON_A: Button(badger2040w.BUTTON_A, invert=False),
-      badger2040w.BUTTON_B: Button(badger2040w.BUTTON_B, invert=False),
-      badger2040w.BUTTON_C: Button(badger2040w.BUTTON_C, invert=False),
-      badger2040w.BUTTON_UP: Button(badger2040w.BUTTON_UP, invert=False),
-      badger2040w.BUTTON_DOWN: Button(badger2040w.BUTTON_DOWN, invert=False),
-      # badger2040w.BUTTON_USER: Button(badger2040w.BUTTON_USER),
+      button: Button(pin)
+      for button, pin in badger2040.BUTTONS.items()
   }
 
   def __init__(self):
